@@ -17,8 +17,6 @@ l1=[
     'Volvo 7700 (2004) Nr. 724',
     'Volvo 7700 (2004) Nr. 728',
     'Volvo 7700 (2004) Nr. 729'
-    
-    
 ]
 
 l2=[
@@ -41,8 +39,6 @@ l2=[
     2389.99,
     2359.99,
 ]
-
-l=[]
 
 p=float(input("Įveskite sumą, kurią norėtumėte išleisti: €"))
 
