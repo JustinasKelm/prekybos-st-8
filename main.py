@@ -68,8 +68,12 @@ else:
                 for i in range(len(l1)):
                     print(f'{str(i+1)}. {l1[i]} - €{str(l2[i])}')
                 r=int(input("Įveskite pasirinkimo numerį: "))
-                p-=l2[r-1]
-                print(f'Pasirinkote {(l1[r-1])}. Jūsų likutis yra €{p:.2f}.')
+                if r<=0:
+                    print('Klaida. Įveskite dar kartą.')
+                    pass
+                else:
+                    p-=l2[r-1]
+                    print(f'Pasirinkote {(l1[r-1])}. Jūsų likutis yra €{p:.2f}.')
         except IndexError:
             print('Klaida. Įveskite dar kartą.')
             pass
