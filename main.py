@@ -40,30 +40,39 @@ l2=[
     2359.99,
 ]
 
-p=0
-while p<=0:
-    p=float(input("Įveskite sumą, kurią norėtumėte išleisti: €"))
-
 while True:
     try:
-        for i in range(len(l2)):  
-            if l2[i]>p:
-                l1.insert(i,0)
-                l1.pop(i+1)
-                l2.insert(i,0)
-                l2.pop(i+1)
-        l1=[i for i in l1 if i != 0]
-        l2=[i for i in l2 if i != 0]
-        if l2==[]:
-            print(f'Dėkojame už Jūsų pirkinį. Jūsų likutis yra €{p:.2f}.')
-            break
-        else:
-            print('Galite įsigyti:')
-            for i in range(len(l1)):
-                print(f'{str(i+1)}. {l1[i]} - €{str(l2[i])}')
-            r=int(input("Įveskite pasirinkimo numerį: "))
-            p-=l2[r-1]
-            print(f'Pasirinkote {(l1[r-1])}. Jūsų likutis yra €{p:.2f}.')
-    except IndexError:
+        p=float(input("Įveskite sumą, kurią norėtumėte išleisti: €"))
+        break
+    except ValueError:
         print('Klaida. Įveskite dar kartą.')
-        pass
+
+if p<min(l2):
+    print('Jūsų įvestos sumos nepakanka jokiems daiktams įsigyti.')
+else:
+    while True:
+        try:
+            for i in range(len(l2)):  
+                if l2[i]>p:
+                    l1.insert(i,'0')
+                    l1.pop(i+1)
+                    l2.insert(i,0)
+                    l2.pop(i+1)
+            l1=[i for i in l1 if i != '0']
+            l2=[i for i in l2 if i != 0]
+            if l2==[]:
+                print(f'Dėkojame už Jūsų pirkinį. Jūsų likutis yra €{p:.2f}.')
+                break
+            else:
+                print('Galite įsigyti:')
+                for i in range(len(l1)):
+                    print(f'{str(i+1)}. {l1[i]} - €{str(l2[i])}')
+                r=int(input("Įveskite pasirinkimo numerį: "))
+                p-=l2[r-1]
+                print(f'Pasirinkote {(l1[r-1])}. Jūsų likutis yra €{p:.2f}.')
+        except IndexError:
+            print('Klaida. Įveskite dar kartą.')
+            pass
+        except ValueError:
+            print('Klaida. Įveskite dar kartą.')
+            pass
